@@ -3,7 +3,7 @@ class ApiConstance {
   // "BASE_API_URL": "https://api.themoviedb.org/3",
   // "BASE_IMAGE_API_URL": "https://image.tmdb.org/t/p/original/"
 
-  static const String apiKey = '';
+  static const String apiKey = '4f0209f6eb4a21dcd94c85bccfe26280';
   static const String apiKeyQuery = '?api_key=$apiKey';
   static const String baseUrl = 'https://api.themoviedb.org/3';
 

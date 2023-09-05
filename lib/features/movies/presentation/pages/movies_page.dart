@@ -82,6 +82,7 @@ class MoviesPage extends StatelessWidget {
                 ),
               ),
               const PopularWidget(),
+              TextButton(onPressed: ()=> showDialogComponent(context), child: const Text("Show Dialog")),
               Container(
                 margin: const EdgeInsets.fromLTRB(
                   16.0,

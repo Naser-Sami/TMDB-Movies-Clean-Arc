@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../core/core.dart';
 import '../../movie.dart';
 import '../bloc/movies/movies_state.dart';
+import '../pages/movie_detail_screen.dart';
 
 class TopRatedWidget extends StatelessWidget {
   const TopRatedWidget({
@@ -44,7 +45,14 @@ class TopRatedWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieDetailScreen(
+                                id: movie.id ?? 0,
+                              ),
+                            ),
+                          );
                         },
                         child: ClipRRect(
                           borderRadius:
@@ -79,7 +87,7 @@ class TopRatedWidget extends StatelessWidget {
             return SizedBox(
               height: 170,
               child: Center(
-                child: Text(state.nowPlayingMessage),
+                child: Text(state.topRatedMessage),
               ),
             );
         }

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import '../bloc/movies/movies_state.dart';
 import '../../../../core/core.dart';
+import '../pages/movie_detail_screen.dart';
 
 class PopularWidget extends StatelessWidget {
   const PopularWidget({
@@ -43,7 +44,14 @@ class PopularWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieDetailScreen(
+                                id: movie.id ?? 0,
+                              ),
+                            ),
+                          );
                         },
                         child: ClipRRect(
                           borderRadius:
@@ -78,7 +86,7 @@ class PopularWidget extends StatelessWidget {
             return SizedBox(
               height: 170,
               child: Center(
-                child: Text(state.nowPlayingMessage),
+                child: Text(state.popularMessage),
               ),
             );
         }

@@ -11,8 +11,16 @@ AppBarTheme? _darkAppBarTheme = AppBarTheme(
   scrolledUnderElevation: AppSize.elevationZero,
   shadowColor: DTColors.secondary,
   titleTextStyle: getTitleMedium(),
+  // systemOverlayStyle: SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   systemOverlayStyle: const SystemUiOverlayStyle(
+    statusBarBrightness: Brightness.dark,
+    statusBarIconBrightness: Brightness.dark,
     statusBarColor: Colors.transparent,
+    systemNavigationBarColor: Colors.white,
+    systemNavigationBarDividerColor: Colors.white,
+    systemNavigationBarIconBrightness: Brightness.dark,
+    systemStatusBarContrastEnforced: true,
+    systemNavigationBarContrastEnforced: true,
   ),
 );
 

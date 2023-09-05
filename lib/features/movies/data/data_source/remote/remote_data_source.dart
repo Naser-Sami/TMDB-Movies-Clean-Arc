@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../../../../config/config.dart';
 import '/core/core.dart';
 import '../../../movie.dart';
 
@@ -43,12 +44,16 @@ class MoviesRemoteDataSource extends BaseMovieRemoteDataSource {
         await Dio().get(ApiConstance.nowPlayingMoviesFinalPath);
 
     if (response.statusCode == 200) {
+
+      showSnackBar("Request Successful", showCloseIcon: true);
+
       return List<MovieModel>.from(
         (response.data['results'] as List).map(
           (e) => MovieModel.fromJson(e),
         ),
       );
     } else {
+      showSnackBar("Failed to load data");
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),
       );

@@ -1,6 +1,7 @@
 import 'package:clean_architecture_structure/features/movies/presentation/bloc/movies_details/movies_details_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../config/config.dart';
 import '../../features/movies/movie.dart';
 
 final sl = GetIt.instance;
@@ -11,6 +12,8 @@ class ServiceLocator {
     // ****************
     ///   Blocs , Factories
     // ****************
+    sl.registerFactory(() => ThemeBloc());
+
     sl.registerFactory(
       () => MoviesBloc(
         sl(),
@@ -20,6 +23,8 @@ class ServiceLocator {
     );
 
     sl.registerFactory(() => MoviesDetailsBloc(sl(), sl()));
+
+    sl.registerFactory(() => NavigationBarCubit());
 
     // ****************
     ///   Data Sources

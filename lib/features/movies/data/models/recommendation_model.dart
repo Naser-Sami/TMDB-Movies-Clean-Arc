@@ -11,6 +11,6 @@ class RecommendationModel extends Recommendation {
       RecommendationModel(
         id: json["id"],
         backdropPath:
-        json["backdrop_path"] ?? '/ta17TltHGdZ5PZz6oUD3N5BRurb.jpg',
+        json["backdrop_path"] ?? '',
       );
 }

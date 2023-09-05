@@ -10,6 +10,7 @@ part 'theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   final List<bool> selectedAppTheme = <bool>[ true, false, false ];
+
   final List<Widget> app_theme = <Widget>[
     const Text('System'),
     const Text('Light'),

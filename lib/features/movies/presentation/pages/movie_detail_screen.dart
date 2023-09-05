@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clean_architecture_structure/config/config.dart';
 import 'package:clean_architecture_structure/features/movies/domain/entities/dummy1.dart';
 import 'package:clean_architecture_structure/features/movies/presentation/bloc/movies_details/movies_details_bloc.dart';
 import 'package:flutter/material.dart';
