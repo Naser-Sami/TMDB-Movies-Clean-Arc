@@ -1,15 +1,15 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clean_architecture_structure/config/config.dart';
-import 'package:clean_architecture_structure/features/movies/domain/entities/dummy1.dart';
-import 'package:clean_architecture_structure/features/movies/presentation/bloc/movies_details/movies_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../config/config.dart';
 import '../../../../core/core.dart';
 import '../../movie.dart';
+import '../bloc/movies_details/movies_details_state.dart';
+import '../presentation.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final int id;
@@ -45,13 +45,13 @@ class MovieDetailContent extends StatelessWidget {
 
         switch(state.moviesDetailsRequestState) {
 
-          case RequestState.loading:
+          case RequestState.Loading:
             return const SizedBox(
                 height: 400,
                 child: Center(
                   child: CircularProgressIndicator(),
                 ));
-          case RequestState.loaded:
+          case RequestState.Loaded:
 
             // LoggerDebug.loggerDebugMessage(state.moviesDetails?.backdropPath);
           return CustomScrollView(
@@ -59,7 +59,7 @@ class MovieDetailContent extends StatelessWidget {
             slivers: [
               SliverAppBar(
                 pinned: true,
-                expandedHeight: 250.0,
+                expandedHeight: getFormFactor(context) == ScreenType.Desktop ? 450 : 250.0,
                 flexibleSpace: FlexibleSpaceBar(
                   background: FadeIn(
                     duration: const Duration(milliseconds: 500),
@@ -80,11 +80,14 @@ class MovieDetailContent extends StatelessWidget {
                         );
                       },
                       blendMode: BlendMode.dstIn,
-                      child: CachedNetworkImage(
-                        width: MediaQuery.of(context).size.width,
-                        imageUrl: ApiConstance.imageUrl(
-                            state.moviesDetails?.backdropPath ?? ""),
-                        fit: BoxFit.cover,
+                      child: Hero(
+                        tag: state.moviesDetails?.backdropPath ?? "",
+                        child: CachedNetworkImage(
+                          width: MediaQuery.of(context).size.width,
+                          imageUrl: ApiConstance.imageUrl(
+                              state.moviesDetails?.backdropPath ?? ""),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -215,7 +218,7 @@ class MovieDetailContent extends StatelessWidget {
               ),
             ],
           );
-          case RequestState.error:
+          case RequestState.Error:
             return SizedBox(
               height: 400,
               child: Center(
@@ -294,11 +297,11 @@ class MovieDetailContent extends StatelessWidget {
             },
             childCount: state.recommendations?.length,
           ),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 8.0,
             crossAxisSpacing: 8.0,
             childAspectRatio: 0.7,
-            crossAxisCount: 3,
+            crossAxisCount: getFormFactor(context) == ScreenType.Desktop ? 4 : 3,
           ),
         );
 

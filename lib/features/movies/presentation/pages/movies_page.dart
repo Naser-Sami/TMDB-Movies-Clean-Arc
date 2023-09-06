@@ -1,4 +1,3 @@
- import 'package:clean_architecture_structure/features/movies/presentation/bloc/movies/movies_events.dart';
 import 'package:clean_architecture_structure/features/movies/presentation/widgets/now_playing_widget.dart';
 import 'package:clean_architecture_structure/features/movies/presentation/widgets/popular_widget.dart';
 import 'package:clean_architecture_structure/features/movies/presentation/widgets/top_rated_widget.dart';

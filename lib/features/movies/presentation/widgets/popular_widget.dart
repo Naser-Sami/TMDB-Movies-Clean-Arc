@@ -4,7 +4,6 @@ import 'package:clean_architecture_structure/features/movies/movie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
-import '../bloc/movies/movies_state.dart';
 import '../../../../core/core.dart';
 import '../pages/movie_detail_screen.dart';
 
@@ -21,14 +20,17 @@ class PopularWidget extends StatelessWidget {
 
         // LoggerDebug.loggerDebugMessage('PopularWidget Build');
 
+        print('popular state');
+        print(state.popularRequestState);
         switch (state.popularRequestState) {
-          case RequestState.loading:
+
+          case RequestState.Loading:
             return const SizedBox(
                 height: 170,
                 child: Center(
                   child: CircularProgressIndicator(),
                 ));
-          case RequestState.loaded:
+          case RequestState.Loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
@@ -44,12 +46,10 @@ class PopularWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
+                          NavigationService().push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => MovieDetailScreen(
-                                id: movie.id ?? 0,
-                              ),
+                            MovieDetailScreen(
+                              id: movie.id ?? 0,
                             ),
                           );
                         },
@@ -82,7 +82,7 @@ class PopularWidget extends StatelessWidget {
                 ),
               ),
             );
-          case RequestState.error:
+          case RequestState.Error:
             return SizedBox(
               height: 170,
               child: Center(

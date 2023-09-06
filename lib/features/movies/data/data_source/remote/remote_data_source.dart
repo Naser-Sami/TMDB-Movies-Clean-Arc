@@ -22,6 +22,7 @@ class MoviesRemoteDataSource extends BaseMovieRemoteDataSource {
     final Response response =
         await Dio().get(ApiConstance.popularMoviesFinalPath);
 
+    // response.statusCode = 500;
     if (response.statusCode == 200) {
       // LoggerDebug.loggerDebugMessage(response);
       // LoggerDebug.loggerDebugMessage('movies response: $response');
@@ -32,6 +33,8 @@ class MoviesRemoteDataSource extends BaseMovieRemoteDataSource {
       );
     } else {
       // throw Exception('Couldn\'t load popular movies. ');
+
+      showSnackBar("Internal Error", showCloseIcon: true);
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),
       );

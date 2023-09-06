@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           if (state is LoadedThemeState) {
             return ScreenUtilInit(
-              designSize: const Size(360, 690),
+
+              // todo check for desktop and web
+              designSize: getFormFactor(context) == ScreenType.Desktop ? const Size(1366, 768) : const Size(360, 690),
               minTextAdapt: true,
               splitScreenMode: true,
               builder: (context, child) {
@@ -39,6 +41,8 @@ class MyApp extends StatelessWidget {
                   child: MaterialApp(
                     title: AppStrings.appName,
                     scaffoldMessengerKey: scaffoldKey,
+                    navigatorKey: sl<NavigationService>().navigatorKey,
+                    scrollBehavior: scrollBehavior,
                     debugShowCheckedModeBanner: false,
                     themeMode: state.themeMode,
                     theme: lightTheme,

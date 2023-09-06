@@ -6,7 +6,6 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/core.dart';
 import '../../movie.dart';
-import '../bloc/movies/movies_state.dart';
 import '../pages/movie_detail_screen.dart';
 
 class TopRatedWidget extends StatelessWidget {
@@ -23,13 +22,13 @@ class TopRatedWidget extends StatelessWidget {
         // LoggerDebug.loggerDebugMessage('TopRatedWidget Build');
 
         switch (state.topRatedRequestState) {
-          case RequestState.loading:
+          case RequestState.Loading:
             return const SizedBox(
                 height: 170,
                 child: Center(
                   child: CircularProgressIndicator(),
                 ));
-          case RequestState.loaded:
+          case RequestState.Loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
@@ -45,12 +44,10 @@ class TopRatedWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
+                          NavigationService().push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => MovieDetailScreen(
-                                id: movie.id ?? 0,
-                              ),
+                            MovieDetailScreen(
+                              id: movie.id ?? 0,
                             ),
                           );
                         },
@@ -83,7 +80,7 @@ class TopRatedWidget extends StatelessWidget {
                 ),
               ),
             );
-          case RequestState.error:
+          case RequestState.Error:
             return SizedBox(
               height: 170,
               child: Center(

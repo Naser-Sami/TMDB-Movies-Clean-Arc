@@ -4,8 +4,8 @@ class NavigationService {
   GlobalKey<NavigatorState> navigatorKey =
   GlobalKey<NavigatorState>(debugLabel: '_globalKey');
 
-  push(Widget screen) {
-    Navigator.of(navigatorKey.currentContext!)
+  push(BuildContext context, Widget screen) {
+    Navigator.of(navigatorKey.currentContext ?? context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return screen;
     }));

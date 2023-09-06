@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 enum AppTheme {
   system("System"),
   light("Light"),
@@ -7,5 +9,7 @@ enum AppTheme {
   final String name;
 }
 
-enum RequestState { loading, loaded, error }
+enum ScreenType { Desktop,  Tablet, Handset, Watch }
+
+enum RequestState { Loading, Loaded, Error }
 

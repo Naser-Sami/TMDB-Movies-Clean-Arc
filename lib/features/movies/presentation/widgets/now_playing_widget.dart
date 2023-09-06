@@ -3,10 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/core.dart';
 import '../../movie.dart';
-import '../bloc/movies/movies_state.dart';
 import '../pages/movie_detail_screen.dart';
 
 class NowPlayingWidget extends StatelessWidget {
@@ -26,13 +26,13 @@ class NowPlayingWidget extends StatelessWidget {
           // LoggerDebug.loggerDebugMessage('NowPlayingWidget Build');
 
           switch (state.nowPlayingRequestState) {
-            case RequestState.loading:
+            case RequestState.Loading:
               return const SizedBox(
                   height: 400,
                   child: Center(
                     child: CircularProgressIndicator(),
                   ));
-            case RequestState.loaded:
+            case RequestState.Loaded:
               return FadeIn(
                 duration: const Duration(milliseconds: 500),
                 child: CarouselSlider(
@@ -47,12 +47,10 @@ class NowPlayingWidget extends StatelessWidget {
                       return GestureDetector(
                         key: const Key('openMovieMinimalDetail'),
                         onTap: () {
-                          Navigator.push(
+                          NavigationService().push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => MovieDetailScreen(
-                                id: item.id ?? 0,
-                              ),
+                            MovieDetailScreen(
+                              id: item.id ?? 0,
                             ),
                           );
                         },
@@ -76,11 +74,17 @@ class NowPlayingWidget extends StatelessWidget {
                                 );
                               },
                               blendMode: BlendMode.dstIn,
-                              child: CachedNetworkImage(
-                                height: 560.0,
-                                imageUrl:
-                                    ApiConstance.imageUrl(item.backdropPath ?? ""),
-                                fit: BoxFit.cover,
+                              child: Center(
+                                child: Hero(
+                                  tag: item.backdropPath ?? "",
+                                  child: CachedNetworkImage(
+                                    height: 560.0,
+                                    width: AppSize.fullWidth * 0.65,
+                                    imageUrl: ApiConstance.imageUrl(
+                                        item.backdropPath ?? ""),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             ),
                             Align(
@@ -131,7 +135,7 @@ class NowPlayingWidget extends StatelessWidget {
                   ).toList(),
                 ),
               );
-            case RequestState.error:
+            case RequestState.Error:
               return SizedBox(
                 height: 400,
                 child: Center(
