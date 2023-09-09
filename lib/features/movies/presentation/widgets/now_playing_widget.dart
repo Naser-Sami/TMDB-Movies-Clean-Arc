@@ -3,11 +3,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../config/config.dart';
 import '../../../../core/core.dart';
-import '../../movie.dart';
 import '../pages/movie_detail_screen.dart';
+import '../presentation.dart';
 
 class NowPlayingWidget extends StatelessWidget {
   const NowPlayingWidget({
@@ -17,8 +17,12 @@ class NowPlayingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
-        buildWhen: (previous, current) =>
-            previous.nowPlayingRequestState != current.nowPlayingRequestState,
+        buildWhen: (previous, current) {
+
+          // LoggerDebug.loggerInformationMessage(previous.nowPlayingMovies == current.nowPlayingMovies);
+
+          return previous.nowPlayingMovies != current.nowPlayingMovies;
+        },
         builder: (context, state) {
           // LoggerDebug.loggerDebugMessage('state is ${state.nowPlayingRequestState}');
           // LoggerDebug.loggerDebugMessage('nowPlayingMovies length is ${state.nowPlayingMovies.length}');
@@ -47,6 +51,9 @@ class NowPlayingWidget extends StatelessWidget {
                       return GestureDetector(
                         key: const Key('openMovieMinimalDetail'),
                         onTap: () {
+
+                          // Navigator.pushNamed(context, Routes.moviesDetailsPage, arguments: item.id ?? 0);
+
                           NavigationService().push(
                             context,
                             MovieDetailScreen(
@@ -79,7 +86,7 @@ class NowPlayingWidget extends StatelessWidget {
                                   tag: item.backdropPath ?? "",
                                   child: CachedNetworkImage(
                                     height: 560.0,
-                                    width: AppSize.fullWidth * 0.65,
+                                    width: isHandset(context) ? AppSize.fullWidth : AppSize.fullWidth * 0.65,
                                     imageUrl: ApiConstance.imageUrl(
                                         item.backdropPath ?? ""),
                                     fit: BoxFit.cover,
@@ -144,5 +151,14 @@ class NowPlayingWidget extends StatelessWidget {
               );
           }
         });
+  }
+}
+
+class NowPlaying extends StatelessWidget {
+  const NowPlaying({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

@@ -13,6 +13,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showSnackBar(
     SnackBar(
       content: Text(text),
       showCloseIcon: showCloseIcon,
+      // closeIconColor: ,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(

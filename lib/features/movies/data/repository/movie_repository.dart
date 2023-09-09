@@ -1,3 +1,4 @@
+import 'package:clean_architecture_structure/config/components/components.dart';
 import 'package:dartz/dartz.dart';
 
 import '/core/core.dart';
@@ -21,6 +22,7 @@ class MovieRepository implements BaseMovieRepository {
     } on ServerException catch (failure) {
       return Left(
         ServerFailure(
+          ApiInternalStatus.FAILURE,
           failure.errorMessageModel.message,
         ),
       );
@@ -36,6 +38,7 @@ class MovieRepository implements BaseMovieRepository {
     } on ServerException catch (failure) {
       return Left(
         ServerFailure(
+          ApiInternalStatus.FAILURE,
           failure.errorMessageModel.message,
         ),
       );
@@ -51,19 +54,20 @@ class MovieRepository implements BaseMovieRepository {
     } on ServerException catch (failure) {
       return Left(
         ServerFailure(
+          ApiInternalStatus.FAILURE,
           failure.errorMessageModel.message,
         ),
       );
     }
   }
 
-
   // ****************
   //  Movies Details
   // ****************
 
   @override
-  Future<Either<Failure, MoviesDetails>> getMoviesDetails(MovieDetailsP p) async {
+  Future<Either<Failure, MoviesDetails>> getMoviesDetails(
+      MovieDetailsP p) async {
     final result = await baseRemoteDataSource.getMoviesDetails(p);
 
     try {
@@ -71,6 +75,7 @@ class MovieRepository implements BaseMovieRepository {
     } on ServerException catch (failure) {
       return Left(
         ServerFailure(
+          ApiInternalStatus.FAILURE,
           failure.errorMessageModel.message,
         ),
       );
@@ -78,7 +83,8 @@ class MovieRepository implements BaseMovieRepository {
   }
 
   @override
-  Future<Either<Failure, List<Recommendation>>> getRecommendationMovies(p) async {
+  Future<Either<Failure, List<Recommendation>>> getRecommendationMovies(
+      p) async {
     final result = await baseRemoteDataSource.getRecommendationMovies(p);
     // LoggerDebug.loggerErrorMessage('result $result');
     try {
@@ -86,6 +92,7 @@ class MovieRepository implements BaseMovieRepository {
     } on ServerException catch (failure) {
       return Left(
         ServerFailure(
+          ApiInternalStatus.FAILURE,
           failure.errorMessageModel.message,
         ),
       );

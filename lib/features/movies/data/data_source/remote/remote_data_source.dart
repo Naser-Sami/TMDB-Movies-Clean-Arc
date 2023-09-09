@@ -19,15 +19,18 @@ abstract class BaseMovieRemoteDataSource {
 class MoviesRemoteDataSource extends BaseMovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getPopularMovies() async {
-    final Response response =
-        await Dio().get(ApiConstance.popularMoviesFinalPath);
+    // final Response response =
+    //     await Dio().get(ApiConstance.popularMoviesFinalPath);
 
-    // response.statusCode = 500;
-    if (response.statusCode == 200) {
+
+    // LoggerDebug.loggerDebugMessage(ApiConstance.popularMoviesFinalPath);
+    final Response? response = await sl<HttpService>().get(ApiConstance.popularMoviesFinalPath);
+
+    if (response?.statusCode == 200) {
       // LoggerDebug.loggerDebugMessage(response);
       // LoggerDebug.loggerDebugMessage('movies response: $response');
       return List<MovieModel>.from(
-        (response.data['results'] as List).map(
+        (response?.data['results'] as List).map(
           (e) => MovieModel.fromJson(e),
         ),
       );
@@ -36,7 +39,7 @@ class MoviesRemoteDataSource extends BaseMovieRemoteDataSource {
 
       showSnackBar("Internal Error", showCloseIcon: true);
       throw ServerException(
-        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+        errorMessageModel: ErrorMessageModel.fromJson(response?.data),
       );
     }
   }

@@ -5,6 +5,9 @@ class ErrorMessageModel extends Equatable {
   final String message;
   final bool success;
 
+  // final bool isSuccess;
+  // final dynamic data;
+
   const ErrorMessageModel({
     required this.statusCode,
     required this.message,

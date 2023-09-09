@@ -8,7 +8,6 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../config/config.dart';
 import '../../../../core/core.dart';
 import '../../movie.dart';
-import '../bloc/movies_details/movies_details_state.dart';
 import '../presentation.dart';
 
 class MovieDetailScreen extends StatelessWidget {

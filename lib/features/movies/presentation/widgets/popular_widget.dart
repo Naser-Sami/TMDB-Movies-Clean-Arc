@@ -1,11 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clean_architecture_structure/features/movies/movie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../core/core.dart';
 import '../pages/movie_detail_screen.dart';
+import '../presentation.dart';
 
 class PopularWidget extends StatelessWidget {
   const PopularWidget({
@@ -20,8 +20,6 @@ class PopularWidget extends StatelessWidget {
 
         // LoggerDebug.loggerDebugMessage('PopularWidget Build');
 
-        print('popular state');
-        print(state.popularRequestState);
         switch (state.popularRequestState) {
 
           case RequestState.Loading:

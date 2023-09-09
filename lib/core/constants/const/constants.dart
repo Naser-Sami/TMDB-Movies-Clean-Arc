@@ -27,4 +27,5 @@ class Constants {
   static const String onboardingKey = "ONBOARDING_KEY";
   static const String userLoggedInKey = "USER_LOGGED_IN_KEY";
   static const String themeIndex = "THEME_INDEX";
+  static const String prefsKeyLang = "PREFS_KEY_LANG";
 }

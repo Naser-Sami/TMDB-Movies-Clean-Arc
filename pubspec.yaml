@@ -70,9 +70,13 @@ dependencies:
 
   # api calling
   dio: ^5.3.2
+  pretty_dio_logger: ^1.3.1
 
   # handel failure and error exceptions
   dartz: ^0.10.1
+
+  # internet info
+  internet_connection_checker: ^1.0.0+1
 
   shimmer: ^3.0.0
   ####

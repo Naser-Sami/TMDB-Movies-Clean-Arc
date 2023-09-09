@@ -17,7 +17,6 @@ class NavigationBarCubit extends Cubit<NavigationBarState> {
       selectedIndex = index;
       emit(NavigationBarIndexState(selectedIndex));
     }
-
   }
 
   List<Destination> allDestinations = const <Destination>[

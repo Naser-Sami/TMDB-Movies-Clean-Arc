@@ -10,16 +10,16 @@ class NavigationBarInitial extends NavigationBarState {
 }
 
 class NavigationBarIndexState extends NavigationBarState {
-  int index;
-  NavigationBarIndexState(this.index);
+  final int index;
+  const NavigationBarIndexState(this.index);
 
   @override
   List<Object> get props => [index];
 }
 
 class NavigationBarCurrentPageState extends NavigationBarState {
-  int index;
-  NavigationBarCurrentPageState(this.index);
+  final int index;
+  const NavigationBarCurrentPageState(this.index);
 
   @override
   List<Object> get props => [index];

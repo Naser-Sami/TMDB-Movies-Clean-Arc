@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../config/config.dart';
-import '../../movie.dart';
+import '../presentation.dart';
 import '/core/core.dart';
 
 class MoviesPage extends StatelessWidget {
@@ -14,24 +14,6 @@ class MoviesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // debug print
-    // LoggerDebug.loggerInformationMessage(
-    //     sl<GetNowPlayingMoviesUsecase>().hashCode);
-
-    //   return BlocProvider(
-    //     create: (context) => MoviesBloc(sl())..add(GetNowPlayingMoviesEvent()),
-    //     lazy: true,
-    //     child: BlocBuilder<MoviesBloc, MoviesState>(
-    //       builder: (context, state) {
-    //         // LoggerDebug.loggerInformationMessage(sl<GetNowPlayingMoviesUsecase>().hashCode);
-    //         return const Scaffold();
-    //       },
-    //     ),
-    //   );
-    // }
-
-    // LoggerDebug.loggerDebugMessage('MoviesPage Build');
-
     return BlocProvider(
       create: (context) => sl<MoviesBloc>()
         ..add(GetNowPlayingMoviesEvent())
@@ -44,7 +26,6 @@ class MoviesPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               const NowPlayingWidget(),
               const SwitchThemeBarComponent(),
               Container(
@@ -63,6 +44,12 @@ class MoviesPage extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         /// TODO : NAVIGATION TO POPULAR SCREEN
+                        sl<HttpService>().post(
+                          'https://api.themoviedb.org/3/movie/615656/rating',
+                          data: {
+                            "value":  3.50
+                          },
+                        );
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),

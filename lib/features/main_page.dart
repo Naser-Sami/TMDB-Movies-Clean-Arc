@@ -10,20 +10,23 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var x = getFormFactor(context);
-    print('xxxx $x');
-    print('Web platform $isWeb');
-    print('Desktop platform $isDesktopDevice');
-    print('Linux platform $isDesktopDeviceLinux');
-    print('MacOS platform $isDesktopDeviceMacOS');
+    // print('xxxx $x');
+    // print('Web platform $isWeb');
+    // print('Desktop platform $isDesktopDevice');
+    // print('Linux platform $isDesktopDeviceLinux');
+    // print('MacOS platform $isDesktopDeviceMacOS');
+    // print('IOS platform $isMobileDeviceIOS');
 
     return Scaffold(
-        // appBar: AppBar(),
-        body: const Body(),
-        bottomNavigationBar: isHandset(context) ? const NavigationBarComponent() : null,
-        resizeToAvoidBottomInset: true,
-        extendBody: false,
-        extendBodyBehindAppBar: false,
-        // bottomSheet: ,
+      appBar: isHandset(context) ? null : AppBar(),
+      drawer: const Drawer(),
+      body: const Body(),
+      bottomNavigationBar:
+          isHandset(context) ? const NavigationBarComponent() : null,
+      resizeToAvoidBottomInset: true,
+      extendBody: false,
+      extendBodyBehindAppBar: false,
+      // bottomSheet: ,
     );
   }
 }

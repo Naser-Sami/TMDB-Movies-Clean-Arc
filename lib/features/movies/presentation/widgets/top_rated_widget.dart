@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../core/core.dart';
 import '../../movie.dart';
 import '../pages/movie_detail_screen.dart';
+import '../presentation.dart';
 
 class TopRatedWidget extends StatelessWidget {
   const TopRatedWidget({

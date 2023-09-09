@@ -1,2 +1,3 @@
 export 'exception.dart';
-export 'faliure.dart';
+export 'failure.dart';
+export 'error_handler.dart';
