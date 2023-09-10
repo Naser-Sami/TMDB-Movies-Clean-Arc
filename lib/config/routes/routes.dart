@@ -1,4 +1,5 @@
 import 'package:clean_architecture_structure/core/core.dart';
+import 'package:clean_architecture_structure/features/entry_point/entry_point.dart';
 import 'package:clean_architecture_structure/features/main_page.dart';
 import 'package:clean_architecture_structure/features/movies/movie.dart';
 
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class Routes {
   static const String splashRoute = "/";
+  static const String entryPoint = "/entry_point";
   static const String noInternetConnectionRoute = "/no_internet_connection";
   static const String onboardingRoute = "/onboarding";
   static const String authRoute = "/auth";
@@ -23,6 +25,9 @@ class Routes {
 class RoutesGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.entryPoint:
+        return MaterialPageRoute(builder: (context) => const EntryPoint());
+
       case Routes.homePageRoute:
         return MaterialPageRoute(builder: (context) => const MainPage());
 

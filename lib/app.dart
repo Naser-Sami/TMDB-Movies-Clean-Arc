@@ -42,7 +42,8 @@ class _MyAppState extends State<MyApp> {
 
   String? initialRoute() {
     if (isConnected) {
-      return Routes.homePageRoute;
+      // return Routes.homePageRoute;
+      return Routes.entryPoint;
     }
     return Routes.noInternetConnectionRoute;
   }

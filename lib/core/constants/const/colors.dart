@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LTColors {
+  static const Color backgroundColor2 = Color(0xFF17203A);
   static const Color background = Color(0xFFF8F9FC);
   static const Color surface = Color(0xFFFFFFFF);
   static const Color outline = Color(0xFFD7D9E4);

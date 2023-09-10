@@ -9,6 +9,7 @@ class AppMargin {
   static double m16 = 16.0.r;
   static double m18 = 18.0.r;
   static double m20 = 20.0.r;
+  static double m24 = 24.0.r;
 }
 
 class AppPadding {
@@ -38,6 +39,7 @@ class AppRadius {
   static double r16 = 16.0.r;
   static double r18 = 18.0.r;
   static double r20 = 20.0.r;
+  static double r24 = 24.0.r;
 }
 
 class AppSize {
@@ -97,6 +99,7 @@ class AppSize {
   static double ws28 = 28.0.w;
   static double ws30 = 30.0.w;
   static double ws32 = 32.0.w;
+  static double ws36 = 36.0.w;
   static double ws40 = 40.0.w;
   static double ws44 = 44.0.w;
   static double ws48 = 48.0.w;
