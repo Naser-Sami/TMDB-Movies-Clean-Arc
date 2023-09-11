@@ -43,7 +43,8 @@ class _MyAppState extends State<MyApp> {
     LoggerDebug.loggerInformationMessage(isConnected);
     if (isConnected) {
       // return Routes.homePageRoute;
-      return Routes.entryPoint;
+      // return Routes.entryPoint;
+      return Routes.onboardingRoute;
     }
     return Routes.noInternetConnectionRoute;
   }
