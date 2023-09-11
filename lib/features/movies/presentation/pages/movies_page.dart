@@ -1,3 +1,4 @@
+import 'package:clean_architecture_structure/features/entry_point/entry_point.dart';
 import 'package:clean_architecture_structure/features/movies/presentation/widgets/now_playing_widget.dart';
 import 'package:clean_architecture_structure/features/movies/presentation/widgets/popular_widget.dart';
 import 'package:clean_architecture_structure/features/movies/presentation/widgets/top_rated_widget.dart';
@@ -22,6 +23,7 @@ class MoviesPage extends StatelessWidget {
       lazy: true,
       child: Scaffold(
         body: SingleChildScrollView(
+          controller: scrollBottomBarController,
           key: const Key('movieScrollView'),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,7 +110,9 @@ class MoviesPage extends StatelessWidget {
                 ),
               ),
               const TopRatedWidget(),
-              const SizedBox(height: 50.0),
+              const SizedBox(height: 16.0),
+              const TopRatedWidget(),
+              const SizedBox(height: 150.0),
             ],
           ),
         ),
