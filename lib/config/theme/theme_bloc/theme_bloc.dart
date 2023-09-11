@@ -9,7 +9,7 @@ part 'theme_event.dart';
 part 'theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  final List<bool> selectedAppTheme = <bool>[ true, false, false ];
+  final List<bool> selectedAppTheme = <bool>[true, false, false];
 
   final List<Widget> app_theme = <Widget>[
     const Text('System'),
@@ -31,10 +31,13 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           selectedAppTheme[i] = false;
         }
       }
-      emit(LoadedThemeState(themeMode: ThemeMode.values[themeIndex]));
-    }
-
-    else if (event is ThemeChangedEvent) {
+      emit(LoadedThemeState(
+        themeMode: ThemeMode.values[themeIndex],
+        isSystemMode: selectedAppTheme[0] ? true : false,
+        isLightMode: selectedAppTheme[1] ? true : false,
+        isDarkMode: selectedAppTheme[2] ? true : false,
+      ));
+    } else if (event is ThemeChangedEvent) {
       final themeIndex = event.theme.index;
       await ThemeCacheHelper().cacheThemeIndex(themeIndex);
 
@@ -46,7 +49,12 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           selectedAppTheme[i] = false;
         }
       }
-      emit(LoadedThemeState(themeMode: ThemeMode.values[themeIndex]));
+      emit(LoadedThemeState(
+        themeMode: ThemeMode.values[themeIndex],
+        isSystemMode: selectedAppTheme[0] ? true : false,
+        isLightMode: selectedAppTheme[1] ? true : false,
+        isDarkMode: selectedAppTheme[2] ? true : false,
+      ));
     }
   }
 }

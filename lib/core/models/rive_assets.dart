@@ -22,6 +22,7 @@ List<RiveAsset> bottomNavs = [
     artboard: "CHAT",
     stateMachineName: "CHAT_Interactivity",
     title: "Chat",
+    
   ),
   RiveAsset(
     "assets/rive/icons.riv",

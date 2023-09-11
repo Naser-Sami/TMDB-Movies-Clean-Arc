@@ -11,7 +11,7 @@ class NavigationBarCubit extends Cubit<NavigationBarState> {
   int selectedIndex = 0;
 
   void changeSelectedIndex(int index) {
-    if(selectedIndex == index) {
+    if (selectedIndex == index) {
       emit(NavigationBarCurrentPageState(selectedIndex));
     } else {
       selectedIndex = index;
@@ -31,6 +31,7 @@ class NavigationBarCubit extends Cubit<NavigationBarState> {
     const Center(child: Text("Business")),
     const Center(child: Text("Wallet")),
     const Center(child: Text("Favorites")),
+    const Center(child: Text("Profile")),
   ];
 }
 

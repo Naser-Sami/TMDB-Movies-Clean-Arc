@@ -46,9 +46,7 @@ class MoviesPage extends StatelessWidget {
                         /// TODO : NAVIGATION TO POPULAR SCREEN
                         sl<HttpService>().post(
                           'https://api.themoviedb.org/3/movie/615656/rating',
-                          data: {
-                            "value":  3.50
-                          },
+                          data: {"value": 9.50},
                         );
                       },
                       child: const Padding(
@@ -68,7 +66,9 @@ class MoviesPage extends StatelessWidget {
                 ),
               ),
               const PopularWidget(),
-              TextButton(onPressed: ()=> showDialogComponent(context), child: const Text("Show Dialog")),
+              TextButton(
+                  onPressed: () => showDialogComponent(context),
+                  child: const Text("Show Dialog")),
               Container(
                 margin: const EdgeInsets.fromLTRB(
                   16.0,

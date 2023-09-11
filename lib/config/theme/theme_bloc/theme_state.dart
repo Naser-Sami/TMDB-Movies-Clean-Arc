@@ -14,8 +14,15 @@ class ThemeInitial extends ThemeState {
 
 class LoadedThemeState extends ThemeState {
   final ThemeMode themeMode;
-  const LoadedThemeState({ required this.themeMode });
+  final bool isSystemMode;
+  final bool isDarkMode;
+  final bool isLightMode;
+
+  const LoadedThemeState({ required this.themeMode,
+    required this.isSystemMode,
+   required this.isDarkMode,
+   required this.isLightMode,  });
 
   @override
-  List<Object> get props => [themeMode];
+  List<Object> get props => [themeMode, isSystemMode, isDarkMode, isLightMode];
 }

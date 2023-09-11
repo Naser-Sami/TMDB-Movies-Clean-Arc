@@ -27,9 +27,8 @@ class _MyAppState extends State<MyApp> {
     // .. first check if internet is connected
     //.. app is connected with internet, it's safe to call the api's
 
-
     // LoggerDebug.loggerDebugMessage(await sl<NetworkInfo>().internetConnectionStatus);
-    if(!kIsWeb) {
+    if (!kIsWeb) {
       if (await sl<NetworkInfo>().isConnected) {
         return isConnected = true;
       } else {
@@ -41,9 +40,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   String? initialRoute() {
+    LoggerDebug.loggerInformationMessage(isConnected);
     if (isConnected) {
-      return Routes.homePageRoute;
-      // return Routes.entryPoint;
+      // return Routes.homePageRoute;
+      return Routes.entryPoint;
     }
     return Routes.noInternetConnectionRoute;
   }
@@ -58,8 +58,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider(
             create: (context) => sl<ThemeBloc>()
-              ..add(CurrentThemeEvent(theme: AppTheme.values[0]))
-            ),
+              ..add(CurrentThemeEvent(theme: AppTheme.values[0]))),
         BlocProvider(create: (context) => sl<NavigationBarCubit>()),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(

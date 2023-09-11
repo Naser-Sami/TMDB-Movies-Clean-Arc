@@ -25,6 +25,9 @@ class Routes {
 class RoutesGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.noInternetConnectionRoute:
+        return noInternetConnectionRoute();
+
       case Routes.entryPoint:
         return MaterialPageRoute(builder: (context) => const EntryPoint());
 
@@ -35,7 +38,7 @@ class RoutesGenerator {
         return MaterialPageRoute(builder: (context) => const MoviesPage());
 
       // case Routes.moviesDetailsPage:
-        // return MaterialPageRoute(builder: (context) => const MovieDetailScreen(id: null,));
+      // return MaterialPageRoute(builder: (context) => const MovieDetailScreen(id: null,));
 
       default:
         return undefinedRoute();
