@@ -72,7 +72,8 @@ class _MyAppState extends State<MyApp> {
 
       LoggerDebug.loggerDebugMessage(isOnBoardingViewed);
       if (isOnBoardingViewed) {
-        return Routes.entryPoint;
+        // return Routes.entryPoint;
+        return Routes.homePageRoute;
       } else {
         return Routes.onboardingRoute;
       }

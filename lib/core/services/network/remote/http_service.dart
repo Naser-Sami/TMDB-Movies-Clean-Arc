@@ -10,8 +10,8 @@ class HttpService {
   final Dio dio = Dio();
   final GetIt getIt = GetIt.instance;
 
-  late String _baseUrl;
-  late String _apiKey;
+  // late String _baseUrl;
+  // late String _apiKey;
 
   HttpService() {
     // AppConfig config = getIt.get<AppConfig>();

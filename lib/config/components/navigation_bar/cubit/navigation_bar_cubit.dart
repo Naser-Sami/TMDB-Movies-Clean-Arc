@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:clean_architecture_structure/features/animations/fade_through_transition.dart';
 import 'package:clean_architecture_structure/features/frosted_glass_design/frosted_glass_design.dart';
 import 'package:clean_architecture_structure/features/movies/movie.dart';
 import 'package:clean_architecture_structure/features/profile/profile.dart';
@@ -31,7 +32,7 @@ class NavigationBarCubit extends Cubit<NavigationBarState> {
   List<Widget> pages = [
     const MoviesPage(),
     const Center(child: Text("Business")),
-    const Center(child: Text("Wallet")),
+    const OpenContainerTransformDemo(),
     const FrostedGlassPage(),
     const ProfilePage(),
   ];

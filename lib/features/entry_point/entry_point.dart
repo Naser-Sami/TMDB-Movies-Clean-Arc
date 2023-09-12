@@ -83,7 +83,7 @@ class _EntryPointState extends State<EntryPoint>
 
   @override
   Widget build(BuildContext context) {
-    // LoggerDebug.loggerInformationMessage(Func.isSystemDarkMode());
+    LoggerDebug.loggerInformationMessage(Func.isSystemDarkMode());
 
     return WillPopScope(
       onWillPop: () async => false,
