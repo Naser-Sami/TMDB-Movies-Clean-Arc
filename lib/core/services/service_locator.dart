@@ -13,15 +13,13 @@ final sl = GetIt.instance;
 
 class ServiceLocator {
   Future<void> init() async {
-
-
     // ****************
     ///   Blocs , Factories
     // ****************
     sl.registerFactory(() => ThemeBloc());
 
     sl.registerFactory(
-          () => MoviesBloc(
+      () => MoviesBloc(
         sl(),
         sl(),
         sl(),
@@ -32,39 +30,33 @@ class ServiceLocator {
 
     sl.registerFactory(() => NavigationBarCubit());
 
-
-
     // ****************
     ///   Internet Info
     // ****************
-    if(!kIsWeb) {
+    if (!kIsWeb) {
       sl.registerLazySingleton<NetworkInfo>(
-              () => NetworkInfoImpl(InternetConnectionChecker()));
+          () => NetworkInfoImpl(InternetConnectionChecker()));
     }
-
 
     // ****************
     ///   SharedPreferenceService
     // ****************
 
     final sharedPrefs = await SharedPreferences.getInstance();
-    sl.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
+    sl.registerFactory<SharedPreferences>(() => sharedPrefs);
 
-    sl.registerLazySingleton<SharedPreferenceService>(
-            () => SharedPreferenceService(sl<SharedPreferences>()));
-
+    sl.registerFactory<SharedPreferenceService>(
+        () => SharedPreferenceService(sl<SharedPreferences>()));
 
     // ****************
     ///   Dio
     // ****************
     sl.registerLazySingleton<HttpService>(() => HttpService());
 
-
     // ****************
     ///   Global Keys
     // ****************
     sl.registerLazySingleton(() => NavigationService());
-
 
     // ****************
     ///   Data Sources
@@ -72,14 +64,12 @@ class ServiceLocator {
     sl.registerLazySingleton<BaseMovieRemoteDataSource>(
         () => MoviesRemoteDataSource());
 
-
     // ****************
     ///   Repositories
     // ****************
     sl.registerLazySingleton<BaseMovieRepository>(() => MovieRepository(
           sl<BaseMovieRemoteDataSource>(),
         ));
-
 
     // ****************
     ///   Usecases

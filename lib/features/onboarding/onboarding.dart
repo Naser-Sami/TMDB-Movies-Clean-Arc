@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../config/config.dart';
+import '../../core/core.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
@@ -20,6 +21,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
+    sl<SharedPreferenceService>().addBoolToSF('on_boarding_viewed', true);
     super.initState();
   }
 

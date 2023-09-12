@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'config/config.dart';
 import 'core/core.dart';
@@ -15,9 +16,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool isConnected = true;
+  bool isOnBoardingViewed = false;
 
   @override
   void initState() {
+    // Register SharedPreferences
+    sl<SharedPreferences>();
+
     checkInternetConnection();
     initialRoute();
     super.initState();
@@ -40,11 +45,37 @@ class _MyAppState extends State<MyApp> {
   }
 
   String? initialRoute() {
-    LoggerDebug.loggerInformationMessage(isConnected);
+    // LoggerDebug.loggerInformationMessage(isConnected);
     if (isConnected) {
       // return Routes.homePageRoute;
       // return Routes.entryPoint;
-      return Routes.onboardingRoute;
+
+      sl<SharedPreferenceService>()
+          .getBoolValuesSF('on_boarding_viewed')
+          .then((value) => {
+                if (value)
+                  {
+                    LoggerDebug.loggerInformationMessage(
+                        'on_boarding_viewed true'),
+                    isOnBoardingViewed = true
+                  }
+                else
+                  {
+                    LoggerDebug.loggerInformationMessage(
+                        'on_boarding_viewed false'),
+                    isOnBoardingViewed = false
+                  }
+              });
+
+      // LoggerDebug.loggerDebugMessage(sl<SharedPreferenceService>()
+      //     .checkValueIfPresent('on_boarding_viewed'));
+
+      LoggerDebug.loggerDebugMessage(isOnBoardingViewed);
+      if (isOnBoardingViewed) {
+        return Routes.entryPoint;
+      } else {
+        return Routes.onboardingRoute;
+      }
     }
     return Routes.noInternetConnectionRoute;
   }

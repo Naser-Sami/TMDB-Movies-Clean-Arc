@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:clean_architecture_structure/features/frosted_glass_design/frosted_glass_design.dart';
 import 'package:clean_architecture_structure/features/movies/movie.dart';
+import 'package:clean_architecture_structure/features/profile/profile.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -30,8 +32,8 @@ class NavigationBarCubit extends Cubit<NavigationBarState> {
     const MoviesPage(),
     const Center(child: Text("Business")),
     const Center(child: Text("Wallet")),
-    const Center(child: Text("Favorites")),
-    const Center(child: Text("Profile")),
+    const FrostedGlassPage(),
+    const ProfilePage(),
   ];
 }
 
