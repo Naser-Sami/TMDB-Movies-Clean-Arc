@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '/features/movies/presentation/bloc/movies_details/movies_details_state.dart';
 import '../../../../config/config.dart';
 import '../../../../core/core.dart';
 import '../../movie.dart';

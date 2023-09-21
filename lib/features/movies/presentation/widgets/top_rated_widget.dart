@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/core.dart';
-import '../../movie.dart';
 import '../pages/movie_detail_screen.dart';
 import '../presentation.dart';
 

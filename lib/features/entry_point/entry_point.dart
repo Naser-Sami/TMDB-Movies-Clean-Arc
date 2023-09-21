@@ -27,7 +27,7 @@ class _EntryPointState extends State<EntryPoint>
   bool isScrollingDown = false;
   bool _show = true;
   double bottomBarHeight = 75; // set bottom bar height
-  double _bottomBarOffset = 0;
+  final double _bottomBarOffset = 0;
 
   // 2. Call initSate() method:
   @override

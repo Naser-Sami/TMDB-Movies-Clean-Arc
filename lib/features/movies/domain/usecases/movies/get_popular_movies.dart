@@ -15,7 +15,7 @@ class GetPopularMoviesUsecase extends BaseUsecase<List<Movies>, NoP> {
 
   // parameters if exist will be send from the presentation layer
   @override
-  Future<Either<Failure, List<Movies>>> call(NoP p) async {
+    Future<Either<Failure, List<Movies>>> call(NoP p) async {
     return await repository.getPopularMovies();
   }
 }

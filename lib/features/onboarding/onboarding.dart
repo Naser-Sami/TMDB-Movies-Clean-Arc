@@ -1,5 +1,3 @@
-import 'package:clean_architecture_structure/config/routes/routes.dart';
-import 'package:clean_architecture_structure/core/constants/const/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

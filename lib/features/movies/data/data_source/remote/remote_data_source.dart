@@ -24,7 +24,8 @@ class MoviesRemoteDataSource extends BaseMovieRemoteDataSource {
 
 
     // LoggerDebug.loggerDebugMessage(ApiConstance.popularMoviesFinalPath);
-    final Response? response = await sl<HttpService>().get(ApiConstance.popularMoviesFinalPath);
+    final Response? response
+    = await sl<HttpService>().get(ApiConstance.popularMoviesFinalPath);
 
     if (response?.statusCode == 200) {
       // LoggerDebug.loggerDebugMessage(response);
